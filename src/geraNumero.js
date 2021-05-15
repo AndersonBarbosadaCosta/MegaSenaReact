@@ -3,7 +3,7 @@ function geraNumeroDiferente(min, max, array) {
     return array.includes(numero) ? geraNumeroDiferente(min, max, array) : numero
  }
 
-export const  geraAposta = quantidade => {
+const  geraAposta = quantidade => {
     const inicial = 0
     const final = 60
     
@@ -18,4 +18,25 @@ export const  geraAposta = quantidade => {
           return aposta
 
 }
- console.log(geraAposta(6))
+
+
+ const resposta = '111111-0001 222222-0002 333333-0003 '
+ const array = resposta.trim().split(' ')
+
+  function getNumPedido(array){
+  return array.map(item => { 
+       const obj = {numPedido: item.substring(0,6),itemPedido:item.substring(7,11)}
+       return obj
+      })
+  }
+
+  function reduzirArray(array){
+  const resposta = array.reduce((array,item) => {
+      const obj = getNumPedido(item)
+      return obj
+    },array)
+    
+    console.log(resposta)
+  }
+
+ reduzirArray(array)
